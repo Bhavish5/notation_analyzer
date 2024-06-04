@@ -1,0 +1,24 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+.app{
+    width: 50%;
+    margin: 5% auto;
+    text-align: center;
+    border: 5px solid black;
+    border-radius: 10px;
+    box-shadow: 10px 20px;
+    padding: 5%;
+}
+
+.btn, input::file-selector-button{
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
