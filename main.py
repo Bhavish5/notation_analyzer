@@ -24,10 +24,12 @@ def analyze_image():
     genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
     model = genai.GenerativeModel("gemini-1.5-flash")
     image = PIL.Image.open("image.jpeg")
-    response = model.generate_content(["Can you generate .pgn notations for the chess notations in the given image?", image], stream=True)
+    response = model.generate_content(["The given image consists of general handwritten chess notations, can you write the standard .pgn chess notations for these handwritten notations understood by a .pgn viewer, which I can directly upload and analyze my game, be sure to follow the standard .pgn format", image], stream=True)
     response.resolve()
+    f = open("game.pgn","w")
     for chunk in response:
-        print(chunk.text)
+        f.write(chunk.text)
+    f.close()
 
 
 if __name__ == "__main__":
