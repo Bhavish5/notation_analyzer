@@ -30,6 +30,16 @@ def analyze_image():
     for chunk in response:
         f.write(chunk.text)
     f.close()
+    format_pgn("game.pgn")
+
+def format_pgn(pgn):
+    with open(pgn, 'r') as file:
+        lines = file.readlines()
+        
+    new_pgn = lines[1:-1]
+
+    with open(pgn, 'w') as file:
+        file.writelines(new_pgn)
 
 
 if __name__ == "__main__":
