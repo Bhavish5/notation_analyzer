@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 import google.generativeai as genai
 import os
 import PIL.Image
@@ -18,7 +18,7 @@ def upload():
         else:
             img.save("image.jpeg")
             analyze_image()
-            return "Image saved!"
+            return send_file("game.pgn", as_attachment=True)
 
 def analyze_image():
     genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
